@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <!--<title>{{title}}</title>-->
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="assets/plugins/fontawesome-free/css/all.min.css">
+  <!-- overlayScrollbars -->
+  <link rel="stylesheet" href="assets/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <!-- Tempusdominus Bootstrap 4 -->
+  <link rel="stylesheet" href="assets/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="assets/dist/css/adminlte.min.css">
+  <!--icheck bootstrap-->
+  <link rel="stylesheet" href="assets/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/ui-lightness/jquery-ui.min.css" integrity="sha512-b2Vnu4ARgWtz47cxvNMnJtelWzsIHnwLf8YlVWa5+kSPbUnWzr+jg6xHcG2ah0amx2nZ94C9cwz/+R06fFzl6g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!--Dev Express Icons-->
+  <link rel="stylesheet" type="text/css" href="https://cdn3.devexpress.com/jslib/19.1.4/css/dx.common.css" />
+  <link rel="stylesheet" type="text/css" href="https://cdn3.devexpress.com/jslib/19.1.4/css/dx.light.css" />
+
+  <!-- jQuery -->
+  <script src="assets/plugins/jquery/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js" integrity="sha512-57oZ/vW8ANMjR/KQ6Be9v/+/h6bq9/l3f0Oc7vn6qMqyhvPd1cvKBRWWpzu0QoneImqr2SkmO4MSqU+RpHom3Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <!-- Bootstrap 4 -->
+  <script src="assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- InputMask -->
+  <script src="assets/plugins/moment/moment.min.js"></script>
+  <!--<script src="assets/plugins/inputmask/jquery.inputmask.min.js"></script>-->
+  <!-- Tempusdominus Bootstrap 4 -->
+  <script src="assets/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.js"></script>
+  <!-- bs-custom-file-input -->
+  <script src="assets/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+  <!-- AdminLTE App -->
+  <script src="assets/dist/js/adminlte.min.js"></script>
+  <!-- AdminLTE for demo purposes -->
+  <!--<script src="assets/dist/js/demo.js"></script>-->
+  <!-- Page specific script -->
+
+  <script>
+    $(document).ready(function () {
+      bsCustomFileInput.init();
+
+      $('#birthDate').unbind();
+      $("#birthDate").datepicker({ dateFormat: 'yy-mm-dd' });
+
+    });
+  </script>
+</head>
+<body class="dx-viewport hold-transition light-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+  <!--<app-root class="sidebar-mini sidebar-open"></app-root>-->
+  <app-root></app-root>
+</body>
+</html>
+

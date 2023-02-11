@@ -1,0 +1,34 @@
+  <!--Content Header (Page header)-->
+<section class="content-header">
+</section>
+<!--Main content-->
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <!--left column-->
+      <div class="col-md-12">
+        <div class="card card-info">
+          <div class="card-header">
+            <h3 class="card-title">Teachers List</h3>
+          </div>
+          <app-generic-table [columns]="columns"
+                             [data]="data"
+                             [buttons]="buttons"
+                             [filterPlaceholder]="'Filter any value'"
+                             [pagination]="[5,10, 25,50, 100,200]"
+                             [pageSize]="5"
+                             [tableMinWidth]="400"
+                             [filter]="true"
+                             [isCollapse]="true"
+                             [childTableData]="childTableData"
+                             (buttonClick)="buttonClick($event)">
+
+          </app-generic-table>
+        </div>
+      </div>
+      <!--/.col (left)-->
+    </div>
+    <!--/.row-->
+  </div>
+</section>
+<!--/.content-->

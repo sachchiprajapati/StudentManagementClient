@@ -1,0 +1,10 @@
+<app-main-header *ngIf="user"></app-main-header>
+
+<app-main-sidebar class="sidebar-dark-primary" *ngIf="user"></app-main-sidebar>
+
+<div class="content-wrapper">
+  <router-outlet></router-outlet>
+</div>
+
+<app-main-footer *ngIf="user"></app-main-footer>
+<app-control-sidebar *ngIf="user" ></app-control-sidebar>

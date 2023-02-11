@@ -1,0 +1,12 @@
+i, .icomoon-liga, .material-icons {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: DXIcons !important;
+  speak: none;
+  /* code */
+}
+
+
+/*Code adding*/
+.dx-icon:before {
+  font-family: DXIcons;
+}

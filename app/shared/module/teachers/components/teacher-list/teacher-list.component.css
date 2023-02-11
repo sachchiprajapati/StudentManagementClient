@@ -1,0 +1,29 @@
+table {
+  width: 100%;
+}
+
+tr.example-detail-row {
+  height: 0;
+}
+
+.example-element-detail {
+  overflow: hidden;
+  display: flex;
+}
+
+
+.profile-user-img {
+  height: 100px;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: #e1e0e0;
+}
+
+.tblHead {
+  background-color: #87cce3;
+}
+
+.example-header {
+  margin-left: 1%
+}

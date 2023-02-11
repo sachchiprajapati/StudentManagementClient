@@ -1,0 +1,91 @@
+<!--Content Header (Page header)-->
+<section class="content-header">
+</section>
+<!--Main content-->
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card card-info">
+          <div class="card-header">
+            <h3 class="card-title">Students Count By Stndard</h3>
+            <button class="btn btn-xs btn-default text-right" (click)="openPDF()" style="float:right">Download PDF</button>
+          </div>
+          <div class="card-body" id="htmlData">
+            <div class="row">
+              <div class="col-md-6">
+                <dx-chart id="chart" [dataSource]="dataSource">
+                  <dxi-series argumentField="Standard"
+                              valueField="Count"
+                              name="Students Count By Standard"
+                              type="bar"
+                              color="#d17357">
+                  </dxi-series>
+                  <dxo-export [enabled]="true"></dxo-export>
+                </dx-chart>
+              </div>
+
+              <div class="col-md-6">
+                <dx-chart id="chart1" [dataSource]="dataSource" palette="soft">
+                  <dxo-title text="Students Count By Standard"
+                             subtitle="as of 2022">
+                  </dxo-title>
+                  <dxo-common-series-settings argumentField="Standard"
+                                              type="bar"
+                                              valueField="Count"
+                                              [ignoreEmptyPoints]="true">
+                  </dxo-common-series-settings>
+                  <dxo-export [enabled]="true"></dxo-export>
+                  <dxo-series-template nameField="Standard"></dxo-series-template>
+                </dx-chart>
+              </div>
+            </div>
+
+            <hr /><hr /><hr />
+
+            <div class="row">
+              <div class="col-md-6">
+                <dx-pie-chart id="pie"
+                              type="doughnut"
+                              title="Students Count By Standard"
+                              palette="Soft Pastel"
+                              [dataSource]="dataSource">
+                  <dxi-series argumentField="Standard" valueField="Count">
+                    <dxo-label [visible]="true" format="millions" [customizeText]="customizeLabel">
+                      <dxo-connector [visible]="true"></dxo-connector>
+                    </dxo-label>
+                  </dxi-series>
+                  <dxo-export [enabled]="true"></dxo-export>
+                  <dxo-legend [margin]="0"
+                              horizontalAlignment="right"
+                              verticalAlignment="top"></dxo-legend>
+                  <dxo-tooltip [enabled]="true"
+                               [customizeTooltip]="customizeTooltip"
+                               format="millions">
+                  </dxo-tooltip>
+                </dx-pie-chart>
+
+              </div>
+
+              <div class="col-md-6">
+                <dx-pie-chart id="pie1"
+                              title="Students Count By Standard"
+                              palette="bright"
+                              [dataSource]="dataSource">
+                  <dxi-series argumentField="Standard" valueField="Count">
+                    <dxo-label [visible]="true">
+                      <dxo-connector [visible]="true" [width]="1"></dxo-connector>
+                    </dxo-label>
+                  </dxi-series>
+                  <dxo-size [width]="500"></dxo-size>
+                  <dxo-export [enabled]="true"></dxo-export>
+                </dx-pie-chart>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

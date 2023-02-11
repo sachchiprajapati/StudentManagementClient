@@ -1,0 +1,79 @@
+<div class="content-header">
+</div>
+<section class="content">
+  <div class="container-fluid">
+    <!-- Small boxes (Stat box) -->
+    <div class="row">
+      <div class="col-md-12">
+        <form class="example-form">
+
+          Auto Complete :
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Assignee</mat-label>
+            <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto">
+            <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+              <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                {{option.name}}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+          <br />
+          <mat-divider></mat-divider>
+          <br />
+          Badge :
+          <div matBadge="4" matBadgeOverlap="false" class="demo-section">Text with a badge</div>
+          <br />
+          <mat-divider></mat-divider>
+          <br />
+          Buttons :
+          <button mat-raised-button color="primary">Primary</button>
+          <br />
+          <mat-divider></mat-divider>
+          <br />
+          CheckBox:
+          <mat-checkbox class="example-margin">Check me!</mat-checkbox>
+          <mat-checkbox class="example-margin" [disabled]="true">Disabled</mat-checkbox>
+          <br />
+          <mat-divider></mat-divider>
+          <br />
+          Chips :
+          <mat-chip-list class="mat-chip-list-stacked"
+                             aria-label="Fish selection">
+
+            <mat-chip color="primary" selected>
+              Primary theme chip 
+            </mat-chip>
+
+            <mat-chip color="accent" selected>
+              Accent theme chip
+            </mat-chip>
+
+            <mat-chip color="warn" selected>
+              Warn theme chip
+            </mat-chip>
+
+            <mat-chip>Default theme chip </mat-chip>
+          </mat-chip-list>
+          <br />
+          <mat-divider></mat-divider>
+          <br />
+          Expandable Panel :
+          <mat-expansion-panel hideToggle>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                This is the expansion title
+              </mat-panel-title>
+              <mat-panel-description>
+                This is a summary of the content
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <p>This is the primary content of the panel.</p>
+          </mat-expansion-panel>
+          <br />
+          <mat-divider></mat-divider>
+          <br />
+        </form>
+      </div>
+      </div>
+  </div>
+</section>

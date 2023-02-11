@@ -1,0 +1,160 @@
+  <!--Content Header (Page header)-->
+<section class="content-header">
+</section>
+<!--Main content-->
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card card-info">
+          <div class="card-header">
+            <h3 class="card-title">Students List</h3>
+          </div>
+          <app-generic-table [columns]="columns"
+                             [data]="data"
+                             [buttons]="buttons"
+                             [filterPlaceholder]="'Filter any value'"
+                             [pagination]="[5,10, 25,50, 100,200]"
+                             [pageSize]="5"
+                             [tableMinWidth]="400"
+                             [filter]="true"
+                             [isCollapse]="true"
+                             [childTableData]="childTableData"
+                             (buttonClick)="buttonClick($event)">
+
+          </app-generic-table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--<div class="col-md-12">
+  <div class="card card-info">
+    <div class="card-header">
+      <h3 class="card-title">Students List</h3>
+    </div>
+    <div class="example-header">
+      <mat-form-field>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Filter">
+      </mat-form-field>
+    </div>
+
+    <div class="example-container mat-elevation-z8">
+      <table mat-table
+             [dataSource]="dataSource" multiTemplateDataRows
+             class="mat-elevation-z8" matSort>
+
+        <ng-container matColumnDef="expand">
+          <th mat-header-cell *matHeaderCellDef aria-label="row actions">Expand/Collapse</th>
+          <td mat-cell *matCellDef="let element">
+            <button mat-icon-button aria-label="expand row" (click)="(expandedElement = expandedElement === element ? null : element); $event.stopPropagation()">
+              <mat-icon *ngIf="expandedElement !== element">keyboard_arrow_down</mat-icon>
+              <mat-icon *ngIf="expandedElement === element">keyboard_arrow_up</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="FirstName">
+          <th *matHeaderCellDef mat-sort-header> FirstName </th>
+          <td *matCellDef="let element"> {{element.FirstName}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="MiddleName">
+          <th *matHeaderCellDef mat-sort-header> MiddleName </th>
+          <td *matCellDef="let element"> {{element.MiddleName}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="LastName">
+          <th *matHeaderCellDef mat-sort-header> LastName </th>
+          <td *matCellDef="let element"> {{element.LastName}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Gender">
+          <th *matHeaderCellDef mat-sort-header> Gender </th>
+          <td *matCellDef="let element"> {{element.Gender}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="StandardName">
+          <th *matHeaderCellDef mat-sort-header> Standard </th>
+          <td *matCellDef="let element"> {{element.StandardName}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="edit">
+          <th *matHeaderCellDef mat-sort-header> Edit </th>
+          <td *matCellDef="let element">
+            <button mat-icon-button matTooltip="Click to Edit" class="iconbutton"
+                    (click)="edit(element.Id)" color="primary">
+              <mat-icon>edit</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="delete">
+          <th *matHeaderCellDef mat-sort-header> Delete </th>
+          <td *matCellDef="let element">
+            <button mat-icon-button matTooltip="Click to Delete" class="iconbutton"
+                    (click)="delete(element.Id)" color="warn">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="expandedDetail">
+          <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplayWithExpand.length">
+            <div class="example-element-detail"
+                 [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+              <table class="table table-striped table-valign-middle">
+                <thead>
+                  <tr class="tblHead">
+                    <th>Photo</th>
+                    <th>Address</th>
+                    <th>Father Occupation</th>
+                    <th>Mother Ocuupation</th>
+                    <th>ContactNo</th>
+                    <th>Birth Date</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <img src="{{baseUrl}}{{element.PhotoPath}}{{element.Photo}}" alt="user" class=" profile-user-img img-fluid img-circle">
+                    </td>
+                    <td>{{element.Address}}</td>
+                    <td>
+                      {{element.FatherOccupation}}
+                    </td>
+                    <td>
+                      {{element.MotherOcuupation}}
+                    </td>
+                    <td>
+                      {{element.ContactNo}}
+                    </td>
+                    <td>
+                      {{element.BirthDate}}
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="columnsToDisplayWithExpand"></tr>
+        <tr mat-row *matRowDef="let element; columns: columnsToDisplayWithExpand;"
+            class="example-element-row"
+            [class.example-expanded-row]="expandedElement === element"
+            (click)="expandedElement = expandedElement === element ? null : element">
+        </tr>
+        <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+
+      </table>
+      <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"
+                     showFirstLastButtons
+                     aria-label="Select page of periodic elements">
+      </mat-paginator>
+
+    </div>
+
+  </div>
+</div>-->

@@ -1,0 +1,165 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+</section>
+
+<!-- Main content -->
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <!-- left column -->
+      <div class="col-md-12">
+        <!-- general form elements -->
+        <div class="card card-primary">
+          <div class="card-header">
+            <h3 class="card-title" *ngIf="isAddMode">Add Student</h3>
+            <h3 class="card-title" *ngIf="!isAddMode">Edit Student</h3>
+          </div>
+          <!-- /.card-header -->
+          <!-- form start -->
+          <form [formGroup]="studentForm" (ngSubmit)="onSubmit()">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label>First Name</label>
+                    <input type="text" class="form-control" placeholder="FirstName" formControlName="firstName" tabindex="1" [ngClass]="{ 'is-invalid': submitted && f['firstName'].errors }">
+                    <div *ngIf="f['firstName'].touched || submitted && f['firstName'].errors" class="invalid-feedback">
+                      <div *ngIf="f['firstName'].errors && f['firstName'].errors['required']">FirstName is required</div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label>Standard</label>
+                    <select formControlName="standard" class="form-control" tabindex="4"
+                            [ngClass]="{ 'is-invalid': submitted && f['standard'].errors }">
+                      <option value="">Select Standard </option>
+                      <option *ngFor="let stdObj of standards" [value]="stdObj.Id">
+                        {{stdObj.Standard}}
+                      </option>
+                    </select>
+                    <div *ngIf="f['standard'].touched || submitted && f['standard'].errors" class="invalid-feedback">
+                      <div *ngIf="f['standard'].errors && f['standard'].errors['required']">Standard is required</div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label>Father Occupation</label>
+                    <input type="text" class="form-control" placeholder="Father Occupation" formControlName="fatherOccupation" tabindex="7" [ngClass]="{ 'is-invalid': submitted && f['fatherOccupation'].errors }">
+                    <div *ngIf="f['fatherOccupation'].touched || submitted && f['fatherOccupation'].errors" class="invalid-feedback">
+                      <div *ngIf="f['fatherOccupation'].errors && f['fatherOccupation'].errors['required']">Father Occupation is required</div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label>Contact No</label>
+                    <input type="text" class="form-control" placeholder="Contact No" formControlName="contactNo" tabindex="10" [ngClass]="{ 'is-invalid': submitted && f['contactNo'].errors }">
+                    <div *ngIf="f['contactNo'].touched || submitted && f['contactNo'].errors" class="invalid-feedback">
+                      <div *ngIf="f['contactNo'].errors && f['contactNo'].errors['required']">Contact No is required</div>
+                      <div *ngIf="f['contactNo'].errors?.pattern">Please Enter 10 digit Mobile Number.</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label>Middle Name</label>
+                    <input type="text" class="form-control" placeholder="MiddleName" formControlName="middleName" tabindex="2" [ngClass]="{ 'is-invalid': submitted && f['middleName'].errors }">
+                    <div *ngIf="f['middleName'].touched || submitted && f['middleName'].errors" class="invalid-feedback">
+                      <div *ngIf="f['middleName'].errors && f['middleName'].errors['required']">MiddleName is required</div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label>Birth Date</label>
+                    <input type="text" class="form-control" id="birthDate" placeholder="BirthDate" tabindex="5" formControlName="birthDate" [ngClass]="{ 'is-invalid': submitted && f['birthDate'].errors }">
+                    <!--<div class="input-group date" id="birthDate" data-target-input="nearest">
+                      <input type="text" class="form-control datetimepicker-input" data-target="#birthDate" formControlName="birthDate" [ngClass]="{ 'is-invalid': submitted && f['birthDate'].errors }" />
+                      <div class="input-group-append" data-target="#birthDate" data-toggle="datetimepicker">
+                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                      </div>
+                    </div>-->
+                    <div *ngIf="submitted && f['birthDate'].errors" class="invalid-feedback">
+                      <div *ngIf="f['birthDate'].errors && f['birthDate'].errors['required']">Birth Date is required</div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label>Mother Occupation</label>
+                    <input type="text" class="form-control" placeholder="Mother Occupation" formControlName="motherOcuupation" tabindex="8" [ngClass]="{ 'is-invalid': submitted && f['motherOcuupation'].errors }">
+                    <div *ngIf="f['motherOcuupation'].touched || submitted && f['motherOcuupation'].errors" class="invalid-feedback">
+                      <div *ngIf="f['motherOcuupation'].errors && f['motherOcuupation'].errors['required']">Mother Occupation is required</div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label>Address</label>
+                    <textarea type="text" class="form-control" placeholder="Address" formControlName="address" tabindex="11" [ngClass]="{ 'is-invalid': submitted && f['address'].errors }"></textarea>
+                    <div *ngIf="f['address'].touched || submitted && f['address'].errors" class="invalid-feedback">
+                      <div *ngIf="f['address'].errors && f['address'].errors['required']">Address is required</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label>Last Name</label>
+                    <input type="text" class="form-control" placeholder="LastName" formControlName="lastName" tabindex="3" [ngClass]="{ 'is-invalid': submitted && f['lastName'].errors }">
+                    <div *ngIf="f['lastName'].touched || submitted && f['lastName'].errors" class="invalid-feedback">
+                      <div *ngIf="f['lastName'].errors && f['lastName'].errors['required']">LastName is required</div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="gender">Gender:</label>
+                    <div>
+                      <input type="radio" value="Male" name="gender" formControlName="gender" checked="checked" tabindex="6">
+                      <label>&nbsp;Male</label>
+                      &nbsp;
+                      <input type="radio" value="Female" name="gender" formControlName="gender" tabindex="6">
+                      <label>&nbsp;Female</label>
+                    </div>
+                    <div *ngIf="f['gender'].touched || submitted && f['gender'].errors" class="invalid-feedback">
+                      <div *ngIf="f['gender'].errors && f['gender'].errors['required']">Please Select Gender</div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputFile">Photo</label>
+                    <div class="input-group">
+                      <div class="custom-file">
+                        <input type="file" class="custom-file-input" accept="image/*" (change)="selectFile($event)" tabindex="9 " formControlName="photo" [ngClass]="{ 'is-invalid': submitted && f['photo'].errors }">
+                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                      </div>
+                    </div>
+                    <div *ngIf="f['photo'].touched || submitted && f['photo'].errors" class="invalid-feedback">
+                      <div *ngIf="f['photo'].errors && f['photo'].errors['required']">Please Upload Photo</div>
+                    </div>
+                  </div>
+                  <div class="form-group" *ngIf="!isAddMode">
+                    <label style="visibility:hidden">Image</label>
+                    <img class="profile-user-img img-fluid img-circle" src="{{baseUrl}}{{StudentImage}}" alt="Image" />
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <!-- /.card-body -->
+
+            <div class="card-footer">
+              <input type="hidden" formControlName="id" />
+              <button [disabled]="loading" class="btn btn-primary ripple" tabindex="12" matRipple matRippleColor="white" [matRippleCentered]="centered">
+                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                Submit
+              </button>
+
+              <button class="btn btn-default float-right ripple" tabindex="13" (click)="cancel()" matRipple  [matRippleCentered]="centered">
+                Cancel
+              </button>
+             <!-- <input type="button" class="btn btn-default float-right ripple" tabindex="13" value="Cancel" matRipple matRippleColor="black" [matRippleCentered]="centered" />-->
+
+
+            </div>
+          </form>
+        </div>
+
+      </div>
+      <!--/.col (left) -->
+
+    </div>
+    <!-- /.row -->
+  </div><!-- /.container-fluid -->
+</section>
+<!-- /.content -->
+<!-- /.content-wrapper -->

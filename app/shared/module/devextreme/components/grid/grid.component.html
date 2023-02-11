@@ -1,0 +1,77 @@
+<!--Content Header (Page header)-->
+<section class="content-header">
+</section>
+<!--Main content-->
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card card-info">
+          <div class="card-header">
+            <h3 class="card-title">Students List - DevExtreme</h3>
+            <button class="btn btn-xs btn-default text-right" (click)="openPDF()" style="float:right">Download
+              PDF</button>
+          </div>
+          <div class="card-body" id="htmlData">
+
+            <dx-data-grid id="studentContainer" keyExpr="Id" [dataSource]="dataSource" [remoteOperations]="false"
+              [allowColumnReordering]="true" [rowAlternationEnabled]="true" [showBorders]="true">
+
+              <!-- <dxo-selection mode="multiple"></dxo-selection> -->
+              <dxo-paging [pageSize]="5">
+              </dxo-paging>
+
+              <dxo-pager [visible]="true" [allowedPageSizes]="[5,10, 25, 50, 100]" [showPageSizeSelector]="true"
+                [showInfo]="true" [showNavigationButtons]="true">
+              </dxo-pager>
+
+              <dxo-header-filter [visible]="true" [allowSearch]="true"></dxo-header-filter>
+
+              <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+
+              <dxi-column dataField="FirstName"></dxi-column>
+              <dxi-column dataField="MiddleName"></dxi-column>
+              <dxi-column dataField="LastName"></dxi-column>
+              <dxi-column dataField="Gender"></dxi-column>
+              <dxi-column caption="Standard" dataField="StandardName"></dxi-column>
+              <dxi-column type="buttons" [width]="110" caption="Action">
+                <dxi-button icon="edit" [onClick]="edit"></dxi-button>
+                <dxi-button icon="trash" [onClick]="delete"></dxi-button>
+              </dxi-column>
+
+              <dxo-export [enabled]="true" [formats]="['pdf']" [allowExportSelectedData]="true"></dxo-export>
+
+              <dxo-master-detail [enabled]="true" template="detail"></dxo-master-detail>
+              <div *dxTemplate="let dataSource of 'detail'">
+                <table class="table table-striped" width="100">
+                  <thead>
+                    <tr>
+                      <th>Photo</th>
+                      <th>Address</th>
+                      <th>Father Occupation</th>
+                      <th>Mother Ocuupation</th>
+                      <th>Contact No</th>
+                      <th>Birth Date</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td> <img src="{{dataSource.data.PhotoPath}}" alt="user"
+                          class="profile-user-img img-fluid img-circle"></td>
+                      <td>{{dataSource.data.Address}}</td>
+                      <td>{{dataSource.data.FatherOccupation}}</td>
+                      <td>{{dataSource.data.MotherOcuupation}}</td>
+                      <td>{{dataSource.data.ContactNo}}</td>
+                      <td>{{dataSource.data.BirthDate}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </dx-data-grid>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,99 @@
+<div class="example-header">
+  <mat-form-field *ngIf="filter">
+    <input matInput (keyup)="applyFilter($event)" placeholder="{{filterPlaceholder}}">
+  </mat-form-field>
+</div>
+<div class="mat-elevation-z8">
+  <table class="mat-elevation-z8" mat-table [dataSource]="dataSource" matSort [ngStyle]="{ 'min-width': + tableMinWidth + 'px' }" multiTemplateDataRows>
+
+    <ng-container matColumnDef="expand" *ngIf="isCollapse">
+      <th mat-header-cell *matHeaderCellDef aria-label="row actions">Expand/Collapse</th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-icon-button aria-label="expand row" (click)="(expandedElement = expandedElement === element ? null : element);loadChildComponent(element); $event.stopPropagation()">
+          <mat-icon *ngIf="expandedElement !== element">keyboard_arrow_down</mat-icon>
+          <mat-icon *ngIf="expandedElement === element">keyboard_arrow_up</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <ng-container *ngFor="let column of columns">
+      <ng-container matColumnDef="{{column.columnDef}}">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>{{ column.header }}</th>
+        <td mat-cell *matCellDef="let row">{{ column.cell(row) }}</td>
+      </ng-container>
+    </ng-container>
+
+    <ng-container *ngIf="buttons.length > 0">
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>Actions</th>
+        <td mat-cell *matCellDef="let row" [ngStyle]="{ 'min-width': 'calc(55px * ' + buttons.length + ')' }">
+          <div class="btn-group" *ngFor="let button of buttons">
+            <button mat-icon-button matTooltip="" class="{{button.styleClass}}" (click)="this.buttonClick.emit([button.action, button.payload(row)])"
+                    color="{{button.colorname}}">
+              <mat-icon>{{ button.icon }}</mat-icon>
+            </button>
+          </div>
+        </td>
+      </ng-container>
+    </ng-container>
+
+    <ng-container matColumnDef="expandedDetail" *ngIf="isCollapse">
+      <td mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length">
+        <div class="example-element-detail"
+             [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+          <table class="table table-striped" width="100%">
+            <thead>
+              <tr class="tblHead">
+                <th *ngFor="let col of childTableData">
+                  {{ col.displayName }}
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td *ngFor="let colrow of childTableData">
+                  <div *ngIf="colrow.isImage; else elseBlock">
+                    <img src="{{ colrow.value}}" alt="user" class=" profile-user-img img-fluid img-circle">
+                  </div>
+                  <ng-template #elseBlock>
+                    {{colrow.value}}
+                  </ng-template>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="disclaimer" *ngIf="footer">
+      <td mat-footer-cell *matFooterCellDef colspan="100">
+        <strong>{{footer}}</strong>
+      </td>
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <ng-container *ngIf="isCollapse">
+      <tr mat-row *matRowDef="let element; columns: displayedColumns"
+          class="example-element-row"
+          [class.example-expanded-row]="expandedElement === element"
+          (click)="loadChildComponent(element);$event.stopPropagation()">
+        <!--(click)="expandedElement = expandedElement === element ? null : element">-->
+      </tr>
+      <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+    </ng-container>
+    <ng-container *ngIf="!isCollapse">
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </ng-container>
+
+
+    <ng-container *ngIf="footer">
+      <!-- Make footer nullable -->
+      <tr mat-footer-row *matFooterRowDef="['disclaimer']" class="example-second-footer-row"></tr>
+    </ng-container>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="pagination" [pageSize]="pageSize" showFirstLastButtons
+                 [ngStyle]="{ 'min-width': + tableMinWidth + 'px' }"></mat-paginator>
+</div>
